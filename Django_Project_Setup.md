@@ -1,0 +1,213 @@
+# 🐍 Django Project Setup Guide — *Project Name: Taskly*
+
+## 1. Create Workspace
+
+* Create a main folder where your Django project will live.
+👉 can **create your main project folder** in **two ways** — either by **terminal command** or **manually**.
+---
+### 🖥️ Option 1: Using Terminal (Command Line)
+
+```bash
+1. mkdir project     # Creates a new folder named "project"
+2. cd project        # Opens (enters) that folder
+```
+After running these two commands, you’ll be **inside** the `project` folder and ready to continue.
+
+---
+### 🖱️ Option 2: Manually (Graphical Way)
+
+1. Go to your file explorer.
+2. Create a new folder and name it **project**.
+3. Open your terminal or VS Code **inside that folder**.
+
+---
+
+✅ **Both methods are the same.**
+The command-line way is just faster and more common in Django/Python tutorials.
+
+---
+
+## 2. Create Project Main Directory
+
+Inside your workspace, create another folder for the main project:
+
+```
+mkdir taskly
+cd taskly
+```
+
+Your structure so far:
+
+```
+project/
+└── taskly/
+```
+---
+
+## 3. Set Up Virtual Environment
+
+A virtual environment keeps dependencies isolated.
+
+### Check Python Installation
+
+```
+python --version
+```
+
+### Create Virtual Environment
+
+```
+python -m venv task_env
+```
+
+### Activate Virtual Environment
+
+Windows:
+
+```
+task_env\Scripts\activate
+```
+
+macOS / Linux:
+
+```
+source task_env/bin/activate
+```
+
+✅ You should now see `(task_env)` in your terminal prompt.
+
+---
+
+## 4. Install Django
+
+Make sure your virtual environment is activated, then install Django:
+
+```
+pip install django
+```
+
+If prompted:
+
+```
+python -m pip install --upgrade pip
+```
+
+---
+
+## 5. Open VS Code
+
+You can open the project in VS Code using:
+
+```
+code .
+```
+
+Or open manually through your file explorer.
+
+---
+
+## 6. Create Django Project
+
+Run the following command **inside the `taskly` directory**:
+
+```
+django-admin startproject taskly .
+```
+
+> The dot (`.`) at the end tells Django to create project files in the current directory (avoiding nested folders).
+
+---
+
+## 7. Run Development Server
+
+To verify everything works:
+
+```
+python manage.py runserver
+```
+
+Open your browser at `http://127.0.0.1:8000/`
+
+To stop the server:
+
+```
+Ctrl + C
+```
+
+---
+
+## 8. Django Project Structure (MVT Architecture)
+
+After setup, your directory structure should look like this:
+
+```
+taskly/
+│
+├── task_env/              # Virtual environment (excluded from Git)
+├── taskly/                # Main Django project package
+│   ├── __init__.py
+│   ├── settings.py        # Project settings
+│   ├── urls.py            # URL configuration
+│   ├── wsgi.py            # WSGI entry point (for deployment)
+│   └── asgi.py            # ASGI entry point (for async support)
+├── db.sqlite3             # Default database
+├── manage.py              # Django command-line utility
+```
+
+**MVT structure overview:**
+
+* **Model (M):** Manages data and database (in `models.py`)
+* **View (V):** Contains business logic (in `views.py`)
+* **Template (T):** Handles the UI and rendering HTML
+
+---
+
+## 9. Create Django Apps
+
+From the **main directory (`taskly/`)**, create your apps:
+
+```
+django-admin startapp tasks
+django-admin startapp users
+```
+
+New structure:
+
+```
+taskly/
+│
+├── tasks/
+│   ├── models.py
+│   ├── views.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── urls.py
+│   └── ...
+├── users/
+│   ├── models.py
+│   ├── views.py
+│   └── ...
+```
+
+---
+
+## 10. Register Apps in Django Settings
+
+Edit `taskly/settings.py` and add your apps to `INSTALLED_APPS`:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    
+    # Custom apps
+    'tasks',
+    'users',
+]
+
+
+Would you like me to add the next steps (like **migrations, superuser creation, and URL routing setup**)? That would complete the initial configuration.
