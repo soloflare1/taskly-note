@@ -3,7 +3,8 @@
 ## 1. Create Workspace
 
 * Create a main folder where your Django project will live.
-👉 can **create your main project folder** in **two ways** — either by **terminal command** or **manually**.
+---
+ ###  create your main project folder  in two ways — either by **terminal command** or **manually**.
 ---
 ### 🖥️ Option 1: Using Terminal (Command Line)
 
@@ -209,5 +210,30 @@ INSTALLED_APPS = [
     'users',
 ]
 
+---
+## In short:
+# 1. Create workspace
+mkdir project && cd project
 
-Would you like me to add the next steps (like **migrations, superuser creation, and URL routing setup**)? That would complete the initial configuration.
+# 2. Create project folder
+mkdir taskly && cd taskly
+
+# 3. Virtual environment
+python -m venv task_env
+task_env\Scripts\activate    # (Windows)
+
+# 4. Install Django
+pip install django
+
+# 5. Create project
+django-admin startproject taskly .
+
+# 6. Run server
+python manage.py runserver
+
+# 7. Create apps
+django-admin startapp tasks
+django-admin startapp users
+
+INSTALLED_APPS = ['tasks', 'users']
+---
